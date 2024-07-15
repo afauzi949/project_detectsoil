@@ -1,8 +1,6 @@
 import sys
 import os
-
 sys.path.append(os.path.join(os.path.dirname(__file__), 'utils'))
-
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -31,8 +29,32 @@ def predict_crop(data):
 
 # Streamlit UI
 st.set_page_config(page_title="Prediksi Tanaman & Harga Pangan", layout="wide")
-
 st.title("Prediksi Tanaman yang Cocok")
+
+# Add an image below the title
+image_url = "https://img.freepik.com/free-photo/photorealistic-view-woman-harvesting-organic-sustainable-garden_23-2151462918.jpg?t=st=1721073942~exp=1721077542~hmac=7fe3ccebc9ff504202684273ccde8723fb104ec79a63087ed0dc63b9b21bfe3e&w=740"
+st.image(image_url, caption='Modern_Aglikultur', use_column_width=True)
+
+# Custom for the button
+st.markdown(
+    """
+    <style>
+    .stButton > button {
+        background-color: #1C3132;
+        color: white;
+        padding: 10px 24px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .stButton > button:hover {
+        background-color: #45a049;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # Sidebar untuk input data pengguna
 st.sidebar.header("Input Data Sensor")
@@ -91,3 +113,4 @@ if not df.empty:
     st.dataframe(df)  # Display the DataFrame in Streamlit
 else:
     st.write("Tidak ada data untuk ditampilkan")
+
